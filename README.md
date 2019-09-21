@@ -1,4 +1,4 @@
-"# Belly Button Biodiversity Dashboard Project
+# Belly Button Biodiversity Dashboard Project
 The project objective is to create an interactive dashboard that explores the Belly Button Biodiversity DataSet. This is a full stack app that includes html, js, css, python and sqlite files.
 <a href= "https://dashboard.heroku.com/apps/belly-button-bio-dash/">View Dashboard</a>
 ### Flask App
