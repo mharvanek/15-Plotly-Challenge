@@ -23,11 +23,11 @@ function buildMetadata(sample) {
     Object.entries(metadata).forEach(([key, value]) => {
       // Log the key and value
       console.log(`Key: ${key} and Value ${value}`);
-      var li = metadata_list.append("li").text(`${key}: ${value}`);
+      metadata_list.append("li").text(`${key}: ${value}`);
     });    
 
     // BONUS: Build the Gauge Chart
-    // buildGauge(data.WFREQ);
+    buildGauge(data.WFREQ);
   });
   }
 
@@ -46,19 +46,21 @@ function buildCharts(sample) {
       type: "scatter",
       mode: "markers",
       name: "",
-      x: samples.otu_ids.slice(0,10),
-      y: samples.sample_values.slice(0,10),
+      x: samples.otu_ids,
+      y: samples.sample_values,
       marker: {
-        size: samples.sample_values.slice(0,10)
+        size: samples.sample_values,
+        color: samples.otu_ids,
+        colorscale: "Viridis"
       }
     };
 
     var bubbleData = [bubbleTrace];
 
-    var layout = {
-      title: "",
+    var bubbleLayout = {
+      hovermode: "closests",
       xaxis: {
-        type: "date"
+        title: "OTU ID"
       },
       yaxis: {
         autorange: true,
@@ -66,7 +68,8 @@ function buildCharts(sample) {
       }
     };
 
-    Plotly.newPlot("bubble", bubbleData, layout);
+
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
     // @TODO: Build a Pie Chart
     // HINT: You will need to use slice() to grab the top 10 sample_values,
@@ -74,14 +77,21 @@ function buildCharts(sample) {
     var pieTrace = {
       labels: samples.otu_ids.slice(0,10),
       values: samples.sample_values.slice(0,10),
-      type: 'pie'
+      hovertext: samples.otu_labels.slice(0, 10),
+      hoverinfo: "hovertext",
+      type: "pie"
+    };
+
+    var pieLayout = {
+      margin: { t: 0, l: 0 }
     };
     
     var pieData = [pieTrace];
     
-    Plotly.newPlot("pie", pieData);
+    Plotly.newPlot("pie", pieData, pieLayout);
   });
   }
+
 
 function init() {
   // Grab a reference to the dropdown select element
