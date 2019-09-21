@@ -1,1 +1,1 @@
-web: gunicorn belly-button-bio-dash.app:app
+web: gunicorn Belly_Button_Diversity.app:app
