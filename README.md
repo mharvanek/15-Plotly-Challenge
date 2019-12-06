@@ -5,7 +5,7 @@ This is a full stack app that will be published to Heroku and includes html, js,
 
 <a href= "https://belly-button-bio-dash.herokuapp.com/">View Dashboard</a>
 ### Flask App
-Create a Flask App to query the data from the provided csv datasets
+Query the data from the belly button biodiversity csv datasets
 * Flask App - app.py
 ### Interactive Dashboard using Ploylt.js
 Use javascript to create interactive charts from the infomration gathered in the Flask App and render on a webpage dashboard
